@@ -34,7 +34,7 @@ public class HttpLoggingFilter extends OncePerRequestFilter {
 
         logger.info("Filter Logs :\n Request DateTime : {} \n Request Body : {} \n Response Status : {} \n Response Body : {}",
                 ZonedDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_DATE_TIME),
-                requestBody, response.getStatus(), responseBody, response);
+                requestBody, response.getStatus(), responseBody);
 
         contentCachingResponseWrapper.copyBodyToResponse();
     }

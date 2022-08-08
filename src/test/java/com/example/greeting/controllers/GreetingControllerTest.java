@@ -25,7 +25,14 @@ class GreetingControllerTest {
     }
 
     @Test
-    void shouldReturnAuthoName() throws Exception {
+    void shouldReturnUserName() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/hello/?name=ZeynabMortazavi"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Hello Zeynab Mortazavi")));
+    }
+
+    @Test
+    void shouldReturnAuthorName() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/author"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Zeynab Mortazavi")));
