@@ -23,4 +23,11 @@ class GreetingControllerTest {
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello Stranger")));
     }
+
+    @Test
+    void shouldReturnAuthoName() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/author"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Zeynab Mortazavi")));
+    }
 }

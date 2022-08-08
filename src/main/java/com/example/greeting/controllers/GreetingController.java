@@ -10,4 +10,9 @@ public class GreetingController {
     public String greeting() {
         return "Hello Stranger";
     }
+
+    @GetMapping("/author")
+    public String getAuthor() {
+        return "Zeynab Mortazavi";
+    }
 }
