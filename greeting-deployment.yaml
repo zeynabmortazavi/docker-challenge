@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeting-deployment
+  namespace: myapp
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: greetingapp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: greetingapp
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: app
+        image: docker.io/zizi95/greetingapp:latest
+        ports:
+        - containerPort: 80
+        - containerPort: 8090
+        env:
+        - name: TZ
+          value: Asia/Tehran
